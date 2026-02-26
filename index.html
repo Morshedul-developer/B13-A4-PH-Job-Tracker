@@ -71,9 +71,23 @@
 
       <!-- buttons -->
       <div class="flex flex-col sm:flex-row gap-2 mb-4">
-        <button onclick="switchTab('tab-all')" id="tab-all" class="btn">All</button>
-        <button onclick="switchTab('tab-interview')" id="tab-interview" class="btn">Interview</button>
-        <button onclick="switchTab('tab-rejected')" id="tab-rejected" class="btn">Rejected</button>
+        <button onclick="switchTab('tab-all')" id="tab-all" class="btn">
+          All
+        </button>
+        <button
+          onclick="switchTab('tab-interview')"
+          id="tab-interview"
+          class="btn"
+        >
+          Interview
+        </button>
+        <button
+          onclick="switchTab('tab-rejected')"
+          id="tab-rejected"
+          class="btn"
+        >
+          Rejected
+        </button>
       </div>
 
       <!-- job list -->
@@ -485,12 +499,14 @@
             </div>
           </div>
         </section>
-        <section id="interview-container" class="grid gap-2 sm:gap-4 hidden">
-          Interview section
-        </section>
-        <section id="rejected-container" class="grid gap-2 sm:gap-4 hidden">
-          Rejected section
-        </section>
+        <section
+          id="interview-container"
+          class="grid gap-2 sm:gap-4 hidden"
+        ></section>
+        <section
+          id="rejected-container"
+          class="grid gap-2 sm:gap-4 hidden"
+        ></section>
       </div>
 
       <!-- no jobs -->

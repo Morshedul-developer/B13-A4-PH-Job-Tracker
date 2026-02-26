@@ -15,7 +15,6 @@ const available = document.getElementById("available-jobs");
 function switchTab(tab) {
     currentTab = tab;
     const tabs = ["tab-all", "tab-interview", "tab-rejected"];
-
     for(let t of tabs) {
         if(t === tab) {
             document.getElementById(t).classList.add("btn-primary");
@@ -24,7 +23,6 @@ function switchTab(tab) {
             document.getElementById(t).classList.remove("btn-primary");
         }
     }
-
     const containers = [allContainer, interviewContainer, rejectedContainer];
 
     for(const container of containers) {
@@ -37,6 +35,7 @@ function switchTab(tab) {
     }else {
         rejectedContainer.classList.remove("hidden");
     }
+    updateCounts();
 }
 switchTab(currentTab);
 
@@ -45,6 +44,7 @@ document.getElementById("job-list")
     .addEventListener('click', function(e) {
         const clickedElement = e.target;
         const card = clickedElement.closest(".card");
+        const cardParent = card.parentNode;
 
         if (clickedElement.classList.contains("btn-interview")) {
             interviewContainer.appendChild(card);
@@ -53,15 +53,25 @@ document.getElementById("job-list")
             rejectedContainer.appendChild(card);
         }
         else if (clickedElement.classList.contains("btn-delete")) {
-            allContainer.removeChild(card);
+            cardParent.removeChild(card);
         }
         updateCounts();
     });
 
 function updateCounts() {
-    totalCount.innerText = allContainer.children.length;
-    interviewCount.innerText = interviewContainer.children.length;
-    rejectedCount.innerText = rejectedContainer.children.length;
-    available.innerText = allContainer.children.length;
+    const counts = {
+        "tab-all": allContainer.children.length,
+        "tab-interview": interviewContainer.children.length,
+        "tab-rejected": rejectedContainer.children.length
+    };
+    totalCount.innerText = counts["tab-all"];
+    interviewCount.innerText = counts["tab-interview"];
+    rejectedCount.innerText = counts["tab-rejected"];
+    available.innerText = counts[currentTab];
+    if(counts[currentTab] < 1) {
+        noJobs.classList.remove("hidden");
+    } else {
+        noJobs.classList.add("hidden");
+    }
 }
 updateCounts();
