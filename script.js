@@ -13,65 +13,66 @@ const available = document.getElementById("available-jobs");
 
 // toggle buttons
 function switchTab(tab) {
-    currentTab = tab;
-    const tabs = ["tab-all", "tab-interview", "tab-rejected"];
-    for(let t of tabs) {
-        if(t === tab) {
-            document.getElementById(t).classList.add("btn-primary");
-        }
-        else {
-            document.getElementById(t).classList.remove("btn-primary");
-        }
+  currentTab = tab;
+  const tabs = ["tab-all", "tab-interview", "tab-rejected"];
+  for (let t of tabs) {
+    if (t === tab) {
+      document.getElementById(t).classList.add("btn-primary");
+    } else {
+      document.getElementById(t).classList.remove("btn-primary");
     }
-    const containers = [allContainer, interviewContainer, rejectedContainer];
+  }
+  const containers = [allContainer, interviewContainer, rejectedContainer];
 
-    for(const container of containers) {
-        container.classList.add("hidden");
-    }
-    if(currentTab === "tab-all") {
-        allContainer.classList.remove("hidden");
-    }else if(currentTab === "tab-interview") {
-        interviewContainer.classList.remove("hidden");
-    }else {
-        rejectedContainer.classList.remove("hidden");
-    }
-    updateCounts();
+  for (const container of containers) {
+    container.classList.add("hidden");
+  }
+  if (currentTab === "tab-all") {
+    allContainer.classList.remove("hidden");
+  } else if (currentTab === "tab-interview") {
+    interviewContainer.classList.remove("hidden");
+  } else {
+    rejectedContainer.classList.remove("hidden");
+  }
+  updateCounts();
 }
 switchTab(currentTab);
 
 // main functionality
-document.getElementById("job-list")
-    .addEventListener('click', function(e) {
-        const clickedElement = e.target;
-        const card = clickedElement.closest(".card");
-        const cardParent = card.parentNode;
+document.getElementById("job-list").addEventListener("click", function (e) {
+  const clickedElement = e.target;
+  const card = clickedElement.closest(".card");
+  const cardParent = card.parentNode;
+  const status = card.querySelector(".not-applied");
 
-        if (clickedElement.classList.contains("btn-interview")) {
-            interviewContainer.appendChild(card);
-        }
-        else if (clickedElement.classList.contains("btn-rejected")) {
-            rejectedContainer.appendChild(card);
-        }
-        else if (clickedElement.classList.contains("btn-delete")) {
-            cardParent.removeChild(card);
-        }
-        updateCounts();
-    });
+  if (clickedElement.classList.contains("btn-interview")) {
+    interviewContainer.appendChild(card);
+    status.innerText = "INTERVIEWED";
+    status.classList.add("text-success");
+  } else if (clickedElement.classList.contains("btn-rejected")) {
+    rejectedContainer.appendChild(card);
+    status.innerText = "REJECTED";
+    status.classList.add("text-error");
+  } else if (clickedElement.classList.contains("btn-delete")) {
+    cardParent.removeChild(card);
+  }
+  updateCounts();
+});
 
 function updateCounts() {
-    const counts = {
-        "tab-all": allContainer.children.length,
-        "tab-interview": interviewContainer.children.length,
-        "tab-rejected": rejectedContainer.children.length
-    };
-    totalCount.innerText = counts["tab-all"];
-    interviewCount.innerText = counts["tab-interview"];
-    rejectedCount.innerText = counts["tab-rejected"];
-    available.innerText = counts[currentTab];
-    if(counts[currentTab] < 1) {
-        noJobs.classList.remove("hidden");
-    } else {
-        noJobs.classList.add("hidden");
-    }
+  const counts = {
+    "tab-all": allContainer.children.length,
+    "tab-interview": interviewContainer.children.length,
+    "tab-rejected": rejectedContainer.children.length,
+  };
+  totalCount.innerText = counts["tab-all"];
+  interviewCount.innerText = counts["tab-interview"];
+  rejectedCount.innerText = counts["tab-rejected"];
+  available.innerText = counts[currentTab];
+  if (counts[currentTab] < 1) {
+    noJobs.classList.remove("hidden");
+  } else {
+    noJobs.classList.add("hidden");
+  }
 }
 updateCounts();
