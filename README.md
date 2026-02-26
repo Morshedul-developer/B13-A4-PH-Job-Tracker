@@ -1,12 +1,3 @@
-## Welcome To ( সহজ সরল সিম্পল ) Assignment - 4 
-
-
----
-# 📅 Deadline For 60 marks: 23th February, 2026 (11:59 pm ⏱️)
-# 📅 Deadline For 50 marks: 24th February, 2026 (11:59 pm ⏱️)
-# 📅 Deadline For 30 marks: Any time after 24th February.
-
-
 # Main Requirements
 
 ## Design Part
@@ -54,18 +45,6 @@
 - Create a readme file and answer this question on your own. Don’t copy-paste from Google or any AI chatbot. 
 
 
-## Answers to Questions
-
-### 1. What is the difference between getElementById, getElementsByClassName, and querySelector / querySelectorAll?
-
-### 2. How do you create and insert a new element into the DOM?
-
-### 3. What is Event Bubbling? And how does it work?
-
-### 4. What is Event Delegation in JavaScript? Why is it useful?
-
-### 5. What is the difference between preventDefault() and stopPropagation() methods?
-
 ---
 
 
@@ -73,11 +52,3 @@
 - HTML
 - CSS (Vanilla/Tailwind/DaisyUI)
 - JavaScript (Vanilla)
-
-
---- 
-
-## What to submit: 
-
-1. GitHub Repository Link: 
-2. Live Site Link: 
