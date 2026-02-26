@@ -3,7 +3,6 @@ let currentTab = "tab-all";
 const allContainer = document.getElementById("all-container");
 const interviewContainer = document.getElementById("interview-container");
 const rejectedContainer = document.getElementById("rejected-container");
-
 const noJobs = document.getElementById("no-jobs");
 
 const totalCount = document.getElementById("total-count");
@@ -11,7 +10,6 @@ const interviewCount = document.getElementById("interview-count");
 const rejectedCount = document.getElementById("rejected-count");
 const available = document.getElementById("available-jobs");
 
-// toggle buttons
 function switchTab(tab) {
   currentTab = tab;
   const tabs = ["tab-all", "tab-interview", "tab-rejected"];
@@ -38,7 +36,6 @@ function switchTab(tab) {
 }
 switchTab(currentTab);
 
-// main functionality
 document.getElementById("job-list").addEventListener("click", function (e) {
   const clickedElement = e.target;
   const card = clickedElement.closest(".card");
